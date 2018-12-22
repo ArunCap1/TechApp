@@ -1,11 +1,14 @@
 https://stackoverflow.com/questions/53898403/kafka-streams-fundamentals-explanation
 
-
 Consumers can join a group by using the samegroup.id.
 
-The maximum parallelism of a group is that the number of consumers in the group ← no of partitions.
+Online :The maximum parallelism of a group is that the number of consumers in the group ← no of partitions.
+Arun : Partitions will be depening on topic .. there will a syntax available in the online .. you could see to find out 
+docker run --net=host wurstmeister/zookeeper kafka-topics --zookeeper localhost:22181 --topic starcom.status --describe
+above syntax will show you how many partitions are there for each topic 
 
 Kafka assigns the partitions of a topic to the consumer in a group, so that each partition is consumed by exactly one consumer in the group.
+--> Still i am having some questions over here .. read it ..
 
 Kafka guarantees that a message is only ever read by a single consumer in the group.
 
