@@ -1,0 +1,12 @@
+https://stackoverflow.com/questions/53898403/kafka-streams-fundamentals-explanation
+
+
+Consumers can join a group by using the samegroup.id.
+
+The maximum parallelism of a group is that the number of consumers in the group ← no of partitions.
+
+Kafka assigns the partitions of a topic to the consumer in a group, so that each partition is consumed by exactly one consumer in the group.
+
+Kafka guarantees that a message is only ever read by a single consumer in the group.
+
+Consumers can see the message in the order they were stored in the log.
