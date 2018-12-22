@@ -1,0 +1,80 @@
+https://stackoverflow.com/questions/48017603/angular-sending-token-with-get-and-other-requests  Authentication code for calling Restful service :
+https://stackoverflow.com/questions/48017603/angular-sending-token-with-get-and-other-requests
+https://stackblitz.com/angular/kmeqdgdrenj?file=src%2Fapp%2Fhttp-interceptors%2Fensure-https-interceptor.ts
+https://medium.com/@MetonymyQT/angular-http-interceptors-what-are-they-and-how-to-use-them-52e060321088
+https://medium.com/@er.surajnegi/what-are-angular-http-interceptors-and-how-to-create-them-82d1d6159c4e
+
+
+Altec Preference Value
+
+Angular js useful link::
+http://www.talkingdotnet.com/bind-select-dropdown-list-in-angular-4-and-5/
+https://stackoverflow.com/questions/40974191/how-to-display-the-dropdown-values-based-on-other-dropdown-value-using-typescrip
+
+getRuleComps() {
+    this.ruleCompService.getRuleComps().subscribe(
+      data => { this.ruleComps = data},
+      err => console.error(err),
+      () => console.log('Loaded rule components... array of size ' + this.ruleComps.length + ' received!')
+    );
+  };
+
+Rest call data :
+https://www.djamware.com/post/5b87894280aca74669894414/angular-6-httpclient-consume-restful-api-example
+https://www.techiediaries.com/angular-tutorial/
+
+For observable and subscriber functions :
+https://medium.com/@luukgruijs/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3
+
+To lookup what is address pointing to 
+nslookup lvh.me
+
+abandaru@dminc.com
+arundocker@1208
+
+Cancel registration :
+https://www.crunch.com/locations/west-end
+
+ const baseURL = 'http://localhost:3000/token/';
+  this.login = function(user) {
+    return $http({
+      method: 'POST',
+      url: baseURL + 'login',
+      data: user,
+      headers: {'Content-Type': 'application/json'}
+    });
+  };
+
+
+
+
+import { Injectable } from '@angular/core'
+import { Http } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+
+@Injectable()
+export class LoginService {
+    private urlLogin: string;
+
+    constructor(private http: Http) {
+        this.urlLogin = "http://yourserver/oauth/token";
+    }
+
+    public login(user) {
+
+        let headers = new Headers({
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Accept": "application/json",
+            "Authorization": "Basic " + btoa("yourclientid" + ':' + "yourclientsecret")
+        });
+
+        let options = new RequestOptions({ headers: headers });
+
+        let data = "username=" + user.yourlogin + "&password=" + encodeURIComponent(user.yourpass) + "&grant_type=password&" +
+            "client_secret=yourclientsecret&client_id=yourclientid";
+
+        return this.http.post(this.urlLogin, data, options)
+            .map(res => res.json());
+    }
+
+}
