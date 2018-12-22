@@ -1,0 +1,103 @@
+Deleting docker images :
+docker image rm -f  image
+
+# Delete every Docker containers
+# Must be run first because images are attached to containers
+docker rm -f $(docker ps -a -q)
+
+# Delete every Docker image .. it will delete all the images 
+docker rmi -f $(docker images -q)
+to start exited docker containers
+docker container start container_name
+https://stackoverflow.com/questions/21928691/how-to-continue-a-docker-container-which-has-exited
+docker start $(docker ps -a -q --filter "status=exited")
+
+
+Groovy file transfer through camel application
+https://github.com/sgoeschl/groovy-scripting
+
+Groovy with sample application ::
+https://dzone.com/articles/getting-started-apache-camel
+
+Certificate with groovy
+https://github.com/square/keywhiz/issues/101
+
+
+Git command to checkout branch
+git clone -b OAuth_Changes https://abandaru@dev.altec.com/bitbucket/scm/tel/etl-api.git
+Git clone -b Yml_changes_for-_local https://abandaru@dev.altec.com/bitbucket/scm/tel/data-transform.git
+
+
+-DoidcAuthorityUrl=http://localhost:3000 -DoidcClientId=dm-m2m -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8912 -DdataApiUrl=http://localhost:9090 clean test
+
+
+mvn -DforkCount=0 -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A -DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080  clean test
+
+Yq0qeLcEpd0B.ob&og#Ax2yb&@h
+HADrEwYb2yLGYGutYM(@ncOls3m
+
+OIDC_AUTHORITY_URL=https://altec-customer-portal.auth0.com/oauth
+OIDC_CLIENT_ID=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A
+OIDC_CLIENT_SECRET=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg
+OIDC_AUDIENCE=telematics-api
+ETL_API_URL=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io
+DATA_API_URL=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+
+
+mvn 
+-DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth 
+-DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A 
+-DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg 
+-DoidcAudience=telematics-api 
+-DetlApiUrl=http://localhost:8080
+-DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+clean test
+
+
+-DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A -DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg -DoidcAudience=telematics-api -DetlApiUrl=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io -DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+
+
+-ea -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A -DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
+-DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+
+
+-DoidcAuthorityUrl=http://localhost:3000/auth -DoidcClientId=dm-ui -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
+-DdataApiUrl=http://localhost:8088 clean test
+
+curl http://localhost:3000/token -u dm-m2m:secret -d grant_type=client_credentials -d scope=etl-api%3Afile%3AuploadTest
+curl http://localhost:3000/token -u dm-m2m:secret -d grant_type=client_credentials -d scope=etl-api%3Aload-test
+
+curl -v -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleXN0b3JlLUNIQU5HRS1NRSJ9.eyJqdGkiOiJxR2JNNldfdjhMSUVPTkJqelB6bm8iLCJzdWIiOiJkbS1tMm0iLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJpYXQiOjE1NDEwMzc0NTUsImV4cCI6MTU0MTAzODA1NSwic2NvcGUiOiJkYXRhLWFwaTpjdXJyZW50X3dpcDpyZWFkIiwiYXVkIjpbImRtLW0ybSIsInRlbGVtYXRpY3MtYXBpIl0sImF6cCI6ImRtLW0ybSJ9.u2K6d5flNzxNRb9-6xo1W22rv5Tn9E9NzDPH_bfssAzm74g5BHJpCCfGeYi5iolc51RlRJDhuxZfWmckd0_x2r2WPCNBVLPj9CGOjDNRMJKU9h0Tedi8kQuyUNuMdS2kg2bVLHReT31abRYoXMkbxTzuJojhY1srJB2QYikxMw7VNHIzdEtDELWN_IonRUM6hIKBCVHe5GRyRT6_6sf13bUKOeq_C34234ezLuGlkgvvOrcj4ZE6_0V1QG6jD_xmYn1f6hUx4qoujmHTF__Hvr4wf98ZuQpc2IcUM0-wIIb9e2ZoeKX5TKkGGQGFLkpVZm-esAoV3Fq07vtDOozJ-g" -H "Content-Type: application/json" http://localhost:8088/metadata
+
+
+-DoidcAuthorityUrl=http://localhost:3000/token -DoidcClientId=dm-m2m -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080 -DdataApiUrl=http://localhost:8088 clean test
+
+
+curl -u dm-m2m:secret -d 'grant_type=client_credentials&scope=dm-config-api%3Aread' http://localhost:3000/token
+
+
+docker exec -it  dm-config-api_mysql_1 mysql -uroot -p
+
+
+curl -u dm-m2m:secret -d ‘grant_type=client_credentials&scope=dm-config-api%3Awrite’ http://localhost:3000/token
+
+
+-DoidcAuthorityUrl=http://localhost:3000/auth -DoidcClientId=dm-ui -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080 -DdataApiUrl=http://localhost:8088 clean test
+
+
+
+static fetchAccessToken_ETLAPI(scope) {
+    def http = new HTTPBuilder()
+    def response = http.post(
+            uri: "${OIDC_AUTHORITY_URL}/token",
+            headers: [Authorization: "Basic ${encodedCredentials()}"],
+            body: [
+                    grant_type: 'client_credentials',
+                    scope     : scope,
+                    audience  : OIDC_AUDIENCE
+
+            ],
+            requestContentType: URLENC
+    )
+    return response.access_token
+}
