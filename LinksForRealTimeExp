@@ -1,0 +1,120 @@
+And one more thing we just have to make sure is running OIDC server which is available as an image in the docker hub.you can pull that image from dm-api docker compose file ..
+https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html
+https://github.com/eugenp/tutorials/blob/master/aws/src/main/java/com/baeldung/s3/S3Application.java
+http://www.javaroots.com/2013/05/how-to-upload-and-download-images-in.html
+https://github.com/apache/camel/blob/master/examples/camel-example-cdi-aws-s3/src/main/java/org/apache/camel/example/cdi/aws/s3/Application.java
+https://www.tutorialspoint.com/apache_kafka/apache_kafka_consumer_group_example.htm
+
+
+
+
+https://github.com/WegenenVerkeer/aws-s3-client/blob/master/src/main/groovy/be/wegenenverkeer/s3/s3Manager.groovy
+
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpJava.html
+https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-s3-buckets.html
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadObjSingleOpJava.html
+
+secret id - AbGyAGXWm9Wn4zTHPo6CMX3rZ4559uQPXF4hr76E
+access key - AKIAI64QW53JY2SWDNDA
+
+
+
+println(currentDir)
+
+// Upload a file as a new object with ContentType and title specified.
+PutObjectRequest request = new PutObjectRequest("altec-telematics-etl/etletlInput/altecGblRent", "Test", new File("/Users/arunkumarbandaru/Documents/Altech/etl-api-test/src/test/resources/expectedData/org/apache/camel/sample.txt"));
+ObjectMetadata metadata = new ObjectMetadata();
+metadata.setContentType("plain/text");
+metadata.addUserMetadata("x-amz-meta-title", "someTitle");
+request.setMetadata(metadata);
+amazonS3.putObject(request);
+
+println("Printing something in AWS")
+
+
+amazonS3.createBucket("altec-telematics-etl")
+
+
+amazonS3.putObject("altec-telematics-etl","etlInput/altecGblRent/",new File("ALTEC_GBL_RENT_20180914045239.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/altecGblUnit/",new File("ALTEC_GBL_UNIT_20180914045239.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/csiIeaValues/",new File("CSI_IEA_VALUES_20180914045238.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/csiIExtendedAttribs/",new File("CSI_I_EXTENDED_ATTRIBS_20180914045238.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/csiItemInstances/",new File("CSI_ITEM_INSTANCES_20180914045239.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/hzCustAccounts/",new File("HZ_CUST_ACCOUNTS_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/hzParties/",new File("HZ_PARTIES_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/hzRelationships/",new File("HZ_RELATIONSHIPS_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/mtlCategoriesB/",new File("MTL_CATEGORIES_B_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/mtlItemCategories/",new File("MTL_ITEM_CATEGORIES_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/mtlParameters/",new File("MTL_PARAMETERS_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/mtlSystemItemsB/",new File("MTL_SYSTEM_ITEMS_B_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/wipDiscreteJobs/",new File("WIP_DISCRETE_JOBS_20180917030810.CSV"))
+amazonS3.putObject("altec-telematics-etl","etlInput/wipEntities/",new File("WIP_ENTITIES_20180917030810.CSV"))
+
+
+
+def "Verify Load_File API"() {
+    println("++++++++++++++++++++++++++ Verify Load_File API ++++++++++++++++++++++++++")
+
+    given: "8 TCU And 6 WIP CSV Files"
+    AmazonS3ClientBuilder s3 =
+            AmazonS3ClientBuilder.standard()
+                    .withRegion(Regions.fromName("us-east-2"))
+                    .withCredentials(
+                    new AWSStaticCredentialsProvider(
+                            new BasicAWSCredentials("AKIAI64QW53JY2SWDNDA","AbGyAGXWm9Wn4zTHPo6CMX3rZ4559uQPXF4hr76E")))
+
+    String workingDir = System.getProperty("user.dir")
+    System.out.println("Current working directory : " + workingDir)
+
+    println("printing something in the console ")
+    AmazonS3 amazonS3 = s3.build()
+
+    when: "Loading 8 TCU And 6 WIP CSV Files"
+
+    if(amazonS3.doesBucketExist("altec-telematics-etl")) {
+        try {
+            System.out.println(" - removing objects from bucket")
+            ObjectListing object_listing = amazonS3.listObjects("altec-telematics-etl")
+            while (true) {
+                for (Iterator<?> iterator =
+                        object_listing.getObjectSummaries().iterator();
+                     iterator.hasNext();) {
+                    S3ObjectSummary summary = (S3ObjectSummary)iterator.next()
+                    amazonS3.deleteObject("altec-telematics-etl", summary.getKey())
+                }
+
+                // more object_listing to retrieve?
+                if (object_listing.isTruncated()) {
+                    object_listing = amazonS3.listNextBatchOfObjects(object_listing)
+                } else {
+                    break
+                }
+            }
+        } catch (AmazonServiceException e) {
+            System.err.println(e.getErrorMessage())
+            System.exit(1)
+        }
+    } else {
+        //only first time it will create it ..
+        amazonS3.createBucket("altec-telematics-etl")
+    }
+
+    amazonS3.putObject("altec-telematics-etl", "etlInput/altecGblRent/ALTEC_GBL_RENT_20180914045239.CSV", new File("src/test/resources/actualData/ALTEC_GBL_RENT_20180914045239.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/altecGblUnit/ALTEC_GBL_UNIT_20180914045239.CSV", new File("src/test/resources/actualData/ALTEC_GBL_UNIT_20180914045239.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/csiIeaValues/CSI_IEA_VALUES_20180914045238.CSV", new File("src/test/resources/actualData/CSI_IEA_VALUES_20180914045238.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/csiIExtendedAttribs/CSI_I_EXTENDED_ATTRIBS_20180914045238.CSV", new File("src/test/resources/actualData/CSI_I_EXTENDED_ATTRIBS_20180914045238.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/csiItemInstances/CSI_ITEM_INSTANCES_20180914045239.CSV", new File("src/test/resources/actualData/CSI_ITEM_INSTANCES_20180914045239.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/hzCustAccounts/HZ_CUST_ACCOUNTS_20180917030810.CSV", new File("src/test/resources/actualData/HZ_CUST_ACCOUNTS_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/hzParties/HZ_PARTIES_20180917030810.CSV", new File("src/test/resources/actualData/HZ_PARTIES_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/hzRelationships/HZ_RELATIONSHIPS_20180917030810.CSV", new File("src/test/resources/actualData/HZ_RELATIONSHIPS_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/mtlCategoriesB/MTL_CATEGORIES_B_20180917030810.CSV", new File("src/test/resources/actualData/MTL_CATEGORIES_B_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/mtlItemCategories/MTL_ITEM_CATEGORIES_20180917030810.CSV", new File("src/test/resources/actualData/MTL_ITEM_CATEGORIES_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/mtlParameters/MTL_PARAMETERS_20180917030810.CSV", new File("src/test/resources/actualData/MTL_PARAMETERS_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/mtlSystemItemsB/MTL_SYSTEM_ITEMS_B_20180917030810.CSV", new File("src/test/resources/actualData/MTL_SYSTEM_ITEMS_B_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/wipDiscreteJobs/WIP_DISCRETE_JOBS_20180917030810.CSV", new File("src/test/resources/actualData/WIP_DISCRETE_JOBS_20180917030810.CSV"))
+    amazonS3.putObject("altec-telematics-etl", "etlInput/wipEntities/WIP_ENTITIES_20180917030810.CSV", new File("src/test/resources/actualData/WIP_ENTITIES_20180917030810.CSV"))
+
+}
+
+
