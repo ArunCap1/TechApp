@@ -13,3 +13,6 @@ Kafka assigns the partitions of a topic to the consumer in a group, so that each
 Kafka guarantees that a message is only ever read by a single consumer in the group.
 
 Consumers can see the message in the order they were stored in the log.
+
+Diff types of partitions reading in realtime 
+https://www.oreilly.com/library/view/kafka-the-definitive/9781491936153/ch04.html
