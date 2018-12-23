@@ -31,7 +31,7 @@ Git clone -b Yml_changes_for-_local https://abandaru@dev.altec.com/bitbucket/scm
 -DoidcAuthorityUrl=http://localhost:3000 -DoidcClientId=dm-m2m -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8912 -DdataApiUrl=http://localhost:9090 clean test
 
 
-mvn -DforkCount=0 -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A -DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080  clean test
+mvn -DforkCount=0 -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080  clean test
 
 Yq0qeLcEpd0B.ob&og#Ax2yb&@h
 HADrEwYb2yLGYGutYM(@ncOls3m
@@ -67,7 +67,7 @@ clean test
 curl http://localhost:3000/token -u dm-m2m:secret -d grant_type=client_credentials -d scope=etl-api%3Afile%3AuploadTest
 curl http://localhost:3000/token -u dm-m2m:secret -d grant_type=client_credentials -d scope=etl-api%3Aload-test
 
-curl -v -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtleXN0b3JlLUNIQU5HRS1NRSJ9.eyJqdGkiOiJxR2JNNldfdjhMSUVPTkJqelB6bm8iLCJzdWIiOiJkbS1tMm0iLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJpYXQiOjE1NDEwMzc0NTUsImV4cCI6MTU0MTAzODA1NSwic2NvcGUiOiJkYXRhLWFwaTpjdXJyZW50X3dpcDpyZWFkIiwiYXVkIjpbImRtLW0ybSIsInRlbGVtYXRpY3MtYXBpIl0sImF6cCI6ImRtLW0ybSJ9.u2K6d5flNzxNRb9-6xo1W22rv5Tn9E9NzDPH_bfssAzm74g5BHJpCCfGeYi5iolc51RlRJDhuxZfWmckd0_x2r2WPCNBVLPj9CGOjDNRMJKU9h0Tedi8kQuyUNuMdS2kg2bVLHReT31abRYoXMkbxTzuJojhY1srJB2QYikxMw7VNHIzdEtDELWN_IonRUM6hIKBCVHe5GRyRT6_6sf13bUKOeq_C34234ezLuGlkgvvOrcj4ZE6_0V1QG6jD_xmYn1f6hUx4qoujmHTF__Hvr4wf98ZuQpc2IcUM0-wIIb9e2ZoeKX5TKkGGQGFLkpVZm-esAoV3Fq07vtDOozJ-g" -H "Content-Type: application/json" http://localhost:8088/metadata
+curl -v -H "Authorization: Bearer Test.Test.u2K6d5flNzxNRb9-Test-wIIb9e2ZoeKX5TKkGGQGFLkpVZm-Test-g" -H "Content-Type: application/json" http://localhost:8088/metadata
 
 
 -DoidcAuthorityUrl=http://localhost:3000/token -DoidcClientId=dm-m2m -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080 -DdataApiUrl=http://localhost:8088 clean test
