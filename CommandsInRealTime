@@ -37,8 +37,8 @@ Yq0qeLcEpd0B.ob&og#Ax2yb&@h
 HADrEwYb2yLGYGutYM(@ncOls3m
 
 OIDC_AUTHORITY_URL=https://altec-customer-portal.auth0.com/oauth
-OIDC_CLIENT_ID=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A
-OIDC_CLIENT_SECRET=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg
+OIDC_CLIENT_ID=Test
+OIDC_CLIENT_SECRET=Test
 OIDC_AUDIENCE=telematics-api
 ETL_API_URL=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io
 DATA_API_URL=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
@@ -46,18 +46,18 @@ DATA_API_URL=http://data-api.4872556745398687121178048791899.telematics-dev.alte
 
 mvn 
 -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth 
--DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A 
--DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg 
+-DoidcClientId=Test 
+-DoidcClientSecret=Test 
 -DoidcAudience=telematics-api 
 -DetlApiUrl=http://localhost:8080
 -DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
 clean test
 
 
--DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A -DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg -DoidcAudience=telematics-api -DetlApiUrl=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io -DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+-DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io -DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
 
 
--ea -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=B4MMeKOQZsl90tJA2LyVQ7dumkJHa69A -DoidcClientSecret=9t6OYesvakdAxEinMPoFQSoBe1hXU9VMGR_vhxJNJ1GfeZRy0GBMzkwALhW6pbeg -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
+-ea -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
 -DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
 
 
