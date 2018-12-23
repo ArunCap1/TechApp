@@ -16,3 +16,7 @@ Consumers can see the message in the order they were stored in the log.
 
 Diff types of partitions reading in realtime 
 https://www.oreilly.com/library/view/kafka-the-definitive/9781491936153/ch04.html
+
+
+parititioning of kafka example and description about :
+https://www.javaworld.com/article/3066873/big-data/big-data-messaging-with-kafka-part-2.html
