@@ -24,11 +24,11 @@ https://github.com/square/keywhiz/issues/101
 
 
 Git command to checkout branch
-git clone -b OAuth_Changes https://abandaru@dev.altec.com/bitbucket/scm/tel/etl-api.git
-Git clone -b Yml_changes_for-_local https://abandaru@dev.altec.com/bitbucket/scm/tel/data-transform.git
+git clone -b OAuth_Changes Test
+Git clone -b Yml_changes_for-_local Test
 
 
--DoidcAuthorityUrl=http://localhost:3000 -DoidcClientId=dm-m2m -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8912 -DdataApiUrl=http://localhost:9090 clean test
+-DoidcAuthorityUrl=http://localhost:3000 -DoidcClientId=test -DoidcClientSecret=test -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8912 -DdataApiUrl=http://localhost:9090 clean test
 
 
 mvn -DforkCount=0 -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080  clean test
@@ -36,29 +36,29 @@ mvn -DforkCount=0 -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oau
 Yq0qeLcEpd0B.ob&og#Ax2yb&@h
 HADrEwYb2yLGYGutYM(@ncOls3m
 
-OIDC_AUTHORITY_URL=https://altec-customer-portal.auth0.com/oauth
+OIDC_AUTHORITY_URL=test/oauth
 OIDC_CLIENT_ID=Test
 OIDC_CLIENT_SECRET=Test
 OIDC_AUDIENCE=telematics-api
-ETL_API_URL=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io
-DATA_API_URL=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+ETL_API_URL=test
+DATA_API_URL=test
 
 
 mvn 
--DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth 
+-DoidcAuthorityUrl=test
 -DoidcClientId=Test 
 -DoidcClientSecret=Test 
 -DoidcAudience=telematics-api 
 -DetlApiUrl=http://localhost:8080
--DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+-DdataApiUrl=test
 clean test
 
 
--DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://etl-api.4872556745398687121178048791899.telematics-dev.altec.io -DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+-DoidcAuthorityUrl=test/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=test -DdataApiUrl=test
 
 
--ea -DoidcAuthorityUrl=https://altec-customer-portal.auth0.com/oauth -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
--DdataApiUrl=http://data-api.4872556745398687121178048791899.telematics-dev.altec.io
+-ea -DoidcAuthorityUrl=test -DoidcClientId=Test -DoidcClientSecret=Test -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
+-DdataApiUrl=test
 
 
 -DoidcAuthorityUrl=http://localhost:3000/auth -DoidcClientId=dm-ui -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080
@@ -70,7 +70,7 @@ curl http://localhost:3000/token -u dm-m2m:secret -d grant_type=client_credentia
 curl -v -H "Authorization: Bearer Test.Test.u2K6d5flNzxNRb9-Test-wIIb9e2ZoeKX5TKkGGQGFLkpVZm-Test-g" -H "Content-Type: application/json" http://localhost:8088/metadata
 
 
--DoidcAuthorityUrl=http://localhost:3000/token -DoidcClientId=dm-m2m -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080 -DdataApiUrl=http://localhost:8088 clean test
+-DoidcAuthorityUrl=http://localhost:3000/token -DoidcClientId=test -DoidcClientSecret=secret -DoidcAudience=telematics-api -DetlApiUrl=http://localhost:8080 -DdataApiUrl=http://localhost:8088 clean test
 
 
 curl -u dm-m2m:secret -d 'grant_type=client_credentials&scope=dm-config-api%3Aread' http://localhost:3000/token
