@@ -1,5 +1,7 @@
 Deleting docker images :
 docker image rm -f  image
+docker rm $(docker ps -aq)
+http://blog.baudson.de/blog/stop-and-remove-all-docker-containers-and-images
 
 # Delete every Docker containers
 # Must be run first because images are attached to containers
