@@ -4,10 +4,11 @@ docker rm $(docker ps -aq)
 http://blog.baudson.de/blog/stop-and-remove-all-docker-containers-and-images
 
 # Delete every Docker containers
-# Must be run first because images are attached to containers
+# Must be run first because images are attached to containers(only running containers only)
 docker rm -f $(docker ps -a -q)
 
-# Delete every Docker image .. it will delete all the images 
+
+# Delete every Docker image .. it will delete all the images (running images also)
 docker rmi -f $(docker images -q)
 to start exited docker containers
 docker container start container_name
