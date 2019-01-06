@@ -6,6 +6,11 @@ https://github.com/apache/camel/blob/master/examples/camel-example-cdi-aws-s3/sr
 https://www.tutorialspoint.com/apache_kafka/apache_kafka_consumer_group_example.htm
 
 
+Certificate related information:
+https://www.youtube.com/watch?v=qXLD2UHq2vk
+For future purpose : had sample application in sample applications folder .. you could find out and play around it ..
+
+
 
 
 https://github.com/WegenenVerkeer/aws-s3-client/blob/master/src/main/groovy/be/wegenenverkeer/s3/s3Manager.groovy
